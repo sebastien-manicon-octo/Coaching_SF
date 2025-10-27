@@ -12,11 +12,14 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(FooBarQixTest FooBarQixTest.cpp)
+add_library(FooBarQix FooBarQix.cpp)
+add_executable(FooBarQixTest FooBarQixTest.cpp
+        FooBarQix.h)
 
 target_link_libraries(
         FooBarQixTest
         GTest::gtest_main
+        FooBarQix
 )
 enable_testing()
 include(GoogleTest)
